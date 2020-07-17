@@ -1,0 +1,11 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js" integrity="sha256-VeNaFBVDhoX3H+gJ37DpT/nTuZTdjYro9yBruHjVmoQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/URI.js/1.19.2/URI.min.js" integrity="sha256-4G6Z1Q3FCGF8hoYV4zb54OENwcZkuE0NnvblFsJTg7s=" crossorigin="anonymous"></script>
+    <script>
+      var uri = URI("{{ site.redirection_url }}").search(location.search).hash(location.hash).segment(location.pathname.replace(/^\//, '')); !uri.hasSearch("proxyReferer") && uri.setSearch("proxyReferer", document.referrer);
+      window.location.replace(uri.href());
+    </script>
+  </head>
+</html>
